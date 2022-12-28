@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap");
+
+
+input {
+    text-align: center;
+
+}
+
+h1 {
+    font-family: "Unbounded", cursive;
+    text-align: center;
+    font-size: 125px;
+}
+
+#response-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+#response-container>div {
+    background-color: black;
+    margin: 10px;
+    font-size: 25px;
+    color: white;
+    font-family: sans-serif;
+}
+
+#box-selector {
+    margin: 10px;
+    font-family: "Rubik", sans-serif;
+}
+
+form {
+    padding: 10px;
+    font-family: "Rubik", sans-serif;
+}
+
+input#question-input {
+    font-size: 30px;
+    box-sizing: content-box;
+    width: 50%;
+}

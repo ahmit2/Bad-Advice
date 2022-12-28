@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -22,7 +23,7 @@
         necessary for critical thinking, is here to help! <br> <br>
         Just enter your inquiry and you’ll have the opportunity to receive feedback from reckless and irresponsible
         people! <br> <br> <b>However, please keep in mind that not all advice is created equal. <br> <br>
-        Use your own judgment and common sense when making decisions.  </b> <br> <br> <br> <br>
+          Use your own judgment and common sense when making decisions. </b> <br> <br> <br> <br>
       </label><br />
       <input style="font-family: 'Rubik', sans-serif" type="text" id="question-input" name="question" /><br />
       <input type="submit" value="Submit" style=" margin-top: 20px" />
@@ -62,10 +63,10 @@
       userInputDiv.style.width = "auto";
       userInputDiv.style.padding = "10px";
       userInputDiv.style.fontFamily = "Rubik, sans-serif";
-      
+
       userInputDiv.setAttribute("contenteditable", "true");
-     
- userInputDiv.addEventListener("focus", () => {
+
+      userInputDiv.addEventListener("focus", () => {
         // Select the text when the box is focused
         const selection = window.getSelection();
         const range = document.createRange();
@@ -95,59 +96,7 @@
 
 
   </script>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
-  </style>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap");
-  </style>
-  <style>
-    input {
-      text-align: center;
 
-    }
-
-    h1 {
-      font-family: "Unbounded", cursive;
-      text-align: center;
-      font-size: 125px;
-    }
-
-    #response-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      z-index: -1;
-    }
-
-    #response-container>div {
-      background-color: black;
-      margin: 10px;
-      font-size: 25px;
-      color: white;
-      font-family: sans-serif;
-    }
-
-    #box-selector {
-      margin: 10px;
-      font-family: "Rubik", sans-serif;
-    }
-
-    form {
-      padding: 10px;
-      font-family: "Rubik", sans-serif;
-    }
-
-    input#question-input {
-      font-size: 30px;
-      box-sizing: content-box;
-      width: 50%;
-    }
-
-   
-
-  </style>
 </body>
 
 </html>
