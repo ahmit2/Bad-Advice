@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Bad Advice</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -8,76 +9,91 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
+
 <body>
   <h1>Bad Advice</h1>
   <center id="form">
     <form id="question-form">
-      <label for="question-input">Do you need advice on a tough decision? <br> <br> Are you seeking counsel from people who are prone
-        to consistently provide unreliable or misguided advice? <br> <br>  Our community, inequipped with the skills necessary for critical thinking, is here to help! <br> <br>
-        Just enter your inquiry and you’ll have the opportunity to receive feedback from reckless and irresponsible people! <br> <br> However, please keep in mind that not all advice is created equal. <br> <br>
-        Use your own judgment and common sense when making decisions. <br> <br> <br> <br>
-      </label><br/>
+      <label for="question-input">Do you need advice on a tough decision? <br> <br> Are you seeking counsel from people
+        who are prone
+        to consistently provide unreliable or misguided advice? <br> <br> Our community, inequipped with the skills
+        necessary for critical thinking, is here to help! <br> <br>
+        Just enter your inquiry and you’ll have the opportunity to receive feedback from reckless and irresponsible
+        people! <br> <br> <b>However, please keep in mind that not all advice is created equal. <br> <br>
+        Use your own judgment and common sense when making decisions.  </b> <br> <br> <br> <br>
+      </label><br />
       <input style="font-family: 'Rubik', sans-serif" type="text" id="question-input" name="question" /><br />
-      <input type="submit" value="Submit" style =" margin-top: 20px"/>
+      <input type="submit" value="Submit" style=" margin-top: 20px" />
     </form>
   </center>
   <div id="response-container"></div>
   <script>
-   const form = document.getElementById("question-form");
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const questionInput = document.getElementById("question-input");
-  if (questionInput.value.trim() === "") {
-    // Display an error message or do nothing if the input is empty
-    return;
-  }
-  const responseContainer = document.getElementById("response-container");
-  const date = new Date();
-  // Create the question box
-  const questionBox = document.createElement("div");
-  questionBox.innerHTML = `<span style="font-size: 30px;">${questionInput.value
-    }</span> <br> <span style="font-size: 10px;">${date.toString()}</span>`;
-  questionBox.style.backgroundColor = "black";
-  questionBox.style.color = "white";
-  questionBox.style.padding = "300px";
-  questionBox.style.width = "150px";
-  questionBox.style.padding = "10px";
-  questionBox.style.fontFamily = "Rubik, sans-serif";
-  questionBox.setAttribute("contenteditable", "false");
-  responseContainer.appendChild(questionBox);
-  
-  // Create the div element that the user can type into
-  const userInputDiv = document.createElement("div");
-  userInputDiv.innerHTML = "Enter your response here";
-  userInputDiv.style.backgroundColor = "black";
-  userInputDiv.style.color = "white";
-  userInputDiv.style.padding = "300px";
-  userInputDiv.style.width = "auto";
-  userInputDiv.style.padding = "10px";
-  userInputDiv.style.fontFamily = "Rubik, sans-serif";
-  userInputDiv.setAttribute("contenteditable", "true");
-  userInputDiv.addEventListener("focus", () => {
-    // Select the text when the box is focused
-    const selection = window.getSelection();
-    const range = document.createRange();
-    range.selectNodeContents(userInputDiv);
-    selection.removeAllRanges();
-    selection.addRange(range);
-  });
-  questionBox.appendChild(userInputDiv);
-  // Add the text from the new boxes to the dropdown menus
-  const questionSelector = document.getElementById("question-selector");
-  const questionOption = document.createElement("option");
-  questionOption.textContent = questionBox.textContent;
-  questionSelector.add(questionOption);
-  const responseSelector = document.getElementById("response-selector");
-  const responseOption = document.createElement("option");
-  responseOption.textContent = "";
-  responseSelector.add(responseOption);
+    const form = document.getElementById("question-form");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const questionInput = document.getElementById("question-input");
+      if (questionInput.value.trim() === "") {
+        // Display an error message or do nothing if the input is empty
+        return;
+      }
+      const responseContainer = document.getElementById("response-container");
+      const date = new Date();
+      // Create the question box
+      const questionBox = document.createElement("div");
+      questionBox.innerHTML = `<span style="font-size: 30px;">${questionInput.value
+        }</span> <br> <span style="font-size: 10px;">${date.toString()}</span>`;
+      questionBox.style.backgroundColor = "black";
+      questionBox.style.color = "white";
+      questionBox.style.padding = "300px";
+      questionBox.style.width = "150px";
+      questionBox.style.padding = "10px";
+      questionBox.style.fontFamily = "Rubik, sans-serif";
+      questionBox.setAttribute("contenteditable", "false");
+      responseContainer.appendChild(questionBox);
+
+      // Create the div element that the user can type into
+      const userInputDiv = document.createElement("div");
+      userInputDiv.innerHTML = "Enter your response here";
+      userInputDiv.style.backgroundColor = "black";
+      userInputDiv.style.color = "white";
+      userInputDiv.style.padding = "300px";
+      userInputDiv.style.width = "auto";
+      userInputDiv.style.padding = "10px";
+      userInputDiv.style.fontFamily = "Rubik, sans-serif";
+      userInputDiv.setAttribute("contenteditable", "true");
+      const rating = document.createElement("div");
+      
+ userInputDiv.addEventListener("focus", () => {
+        // Select the text when the box is focused
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(userInputDiv);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      });
+      questionBox.appendChild(userInputDiv);
+      // Add the text from the new boxes to the dropdown menus
+      const questionSelector = document.getElementById("question-selector");
+      const questionOption = document.createElement("option");
+      questionOption.textContent = questionBox.textContent;
+      questionSelector.add(questionOption);
+      const responseSelector = document.getElementById("response-selector");
+      const responseOption = document.createElement("option");
+      responseOption.textContent = "";
+      responseSelector.add(responseOption);
       // Clear the input field
-      questionInput.value = "";
+
+      document.getElementById("question-input").value = "";  // clear the input field
     });
+
+
+
+
+
+
+
   </script>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
@@ -86,11 +102,17 @@ form.addEventListener("submit", (event) => {
     @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap");
   </style>
   <style>
+    input {
+      text-align: center;
+
+    }
+
     h1 {
       font-family: "Unbounded", cursive;
       text-align: center;
       font-size: 125px;
     }
+
     #response-container {
       display: flex;
       flex-wrap: wrap;
@@ -98,6 +120,7 @@ form.addEventListener("submit", (event) => {
       align-items: center;
       z-index: -1;
     }
+
     #response-container>div {
       background-color: black;
       margin: 10px;
@@ -105,19 +128,27 @@ form.addEventListener("submit", (event) => {
       color: white;
       font-family: sans-serif;
     }
+
     #box-selector {
       margin: 10px;
       font-family: "Rubik", sans-serif;
     }
+
     form {
       padding: 10px;
       font-family: "Rubik", sans-serif;
     }
+
     input#question-input {
       font-size: 30px;
       box-sizing: content-box;
       width: 50%;
     }
+
+    div {
+      border-color: black;
+    }
   </style>
 </body>
+
 </html>
