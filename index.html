@@ -31,69 +31,78 @@
   </center>
   <div id="response-container"></div>
   <script>
-    const form = document.getElementById("question-form");
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const questionInput = document.getElementById("question-input");
-      if (questionInput.value.trim() === "") {
+const addButton = document.createElement("button");
+addButton.innerHTML = "Add input";
+const form = document.getElementById("question-form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const questionInput = document.getElementById("question-input");
+    if (questionInput.value.trim() === "") {
         // Display an error message or do nothing if the input is empty
         return;
-      }
-      const responseContainer = document.getElementById("response-container");
-      const date = new Date();
-      // Create the question box
-      const questionBox = document.createElement("div");
-      questionBox.innerHTML = `<span style="font-size: 30px;">${questionInput.value
+    }
+    const responseContainer = document.getElementById("response-container");
+    const date = new Date();
+    // Create the question box
+    const questionBox = document.createElement("div");
+    questionBox.innerHTML = `<span style="font-size: 30px;">${questionInput.value
         }</span> <br> <span style="font-size: 10px;">${date.toString()}</span>`;
-      questionBox.style.backgroundColor = "black";
-      questionBox.style.color = "white";
-      questionBox.style.padding = "300px";
-      questionBox.style.width = "150px";
-      questionBox.style.padding = "10px";
-      questionBox.style.fontFamily = "Rubik, sans-serif";
-      questionBox.setAttribute("contenteditable", "false");
-      responseContainer.appendChild(questionBox);
+    questionBox.style.backgroundColor = "black";
+    questionBox.style.color = "white";
+    questionBox.style.padding = "300px";
+    questionBox.style.width = "150px";
+    questionBox.style.padding = "10px";
+    questionBox.style.fontFamily = "Rubik, sans-serif";
+    questionBox.setAttribute("contenteditable", "false");
+    responseContainer.appendChild(questionBox);
 
-      // Create the div element that the user can type into
-      const userInputDiv = document.createElement("div");
-      userInputDiv.innerHTML = "Enter your response here";
-      userInputDiv.style.backgroundColor = "black";
-      userInputDiv.style.color = "white";
-      userInputDiv.style.padding = "300px";
-      userInputDiv.style.width = "auto";
-      userInputDiv.style.padding = "10px";
-      userInputDiv.style.fontFamily = "Rubik, sans-serif";
+    // Create the div element that the user can type into
+    const userInputDiv = document.createElement("div");
+    userInputDiv.innerHTML = "Enter your response here";
+    userInputDiv.style.backgroundColor = "black";
+    userInputDiv.style.color = "white";
+    userInputDiv.style.padding = "10px";
+    userInputDiv.style.fontFamily = "Rubik, sans-serif";
+    userInputDiv.setAttribute("contenteditable", "true");
 
-      userInputDiv.setAttribute("contenteditable", "true");
-
-      userInputDiv.addEventListener("focus", () => {
-        // Select the text when the box is focused
+    userInputDiv.addEventListener("focus", () => {
         const selection = window.getSelection();
         const range = document.createRange();
         range.selectNodeContents(userInputDiv);
         selection.removeAllRanges();
         selection.addRange(range);
-      });
-      questionBox.appendChild(userInputDiv);
-      // Add the text from the new boxes to the dropdown menus
-      const questionSelector = document.getElementById("question-selector");
-      const questionOption = document.createElement("option");
-      questionOption.textContent = questionBox.textContent;
-      questionSelector.add(questionOption);
-      const responseSelector = document.getElementById("response-selector");
-      const responseOption = document.createElement("option");
-      responseOption.textContent = "";
-      responseSelector.add(responseOption);
-      // Clear the input field
-
-      document.getElementById("question-input").value = "";  // clear the input field
     });
 
 
 
+    addButton.addEventListener("click", () => {
+        const responseDiv = document.createElement("div");
+        if (userInputDiv.innerHTML.trim() === "") {
+            // Don't create a new response div if the user's input is empty
+            return;
+        }
+        if (userInputDiv.innerHTML.trim() === "Enter your response here") {
+            // Don't create a new response div if the user's input is empty
+            return;
+        }
+        responseDiv.setAttribute("contenteditable", "true");
+        responseDiv.innerHTML = "Enter your response here";
+        responseDiv.style.backgroundColor = "black";
+        responseDiv.style.color = "white";
+        responseDiv.style.padding = "10px";
+        responseDiv.style.fontFamily = "Rubik, sans-serif";
+        questionBox.appendChild(responseDiv);
+    });
+
+
+    questionBox.appendChild(addButton);
+
+
+    questionBox.appendChild(userInputDiv);
 
 
 
+});
 
   </script>
 
