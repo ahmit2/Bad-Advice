@@ -3,6 +3,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap');
 
 input {
     text-align: center;
@@ -10,36 +11,38 @@ input {
 }
 
 h1 {
-    font-family: "Unbounded", cursive;
+    font-family: 'Work Sans', sans-serif;
     text-align: center;
     font-size: 125px;
+    text-align: left;
+}
+h2 {
+    font-family: 'Unbounded', cursive;
 }
 
 #response-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     justify-content: center;
-    align-items: center;
     z-index: -1;
+    margin: 0 auto;
+    flex-direction: row;
+    align-items: flex-end;
+    align-content: center;
+    height: fit-content;
+    width: fit-content;
+    
 }
 
-#response-container>div {
-    background-color: black;
-    margin: 10px;
-    font-size: 25px;
-    color: white;
-    font-family: sans-serif;
-}
 
 #box-selector {
     margin: 10px;
     font-family: "Rubik", sans-serif;
 }
 
-form {
-    padding: 10px;
-    font-family: "Rubik", sans-serif;
-}
+#parent {
+    display: flex;
+  }
 
 input#question-input {
     font-size: 30px;
@@ -47,22 +50,49 @@ input#question-input {
     width: 50%;
 }
 
-#question-form {
-    background-color: black;
+button {
+    margin: auto;
     color: white;
+    background-color: transparent;
+    font-weight: 900;
+    border-color: transparent;
+}
+
+
+#question-form {
+    background-color: white;
+    color: black;
     padding: 5em;
-    width: fit-content;
+    width: 45%;
     text-align: left;
     font-family: Rubik, sans-serif;
-  }
-  
 
-  
-  #question-form input[type="submit"] {
+}
+
+.container {
+    overflow: auto;
+    /* clear the floats */
+    padding: 10px;
+    font-family: "Rubik", sans-serif;
+}
+
+
+
+
+
+#question-form input[type="submit"] {
     background-color: black;
     color: white;
     padding: 10px;
     font-family: Rubik, sans-serif;
     margin-top: 20px;
-  }
-  
+    float: left;
+    /* float the form to the left */
+    width: 50%;
+    /* specify a width for the form */
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+}

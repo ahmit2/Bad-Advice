@@ -3,6 +3,9 @@
 
 <head>
   <title>Bad Advice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
@@ -13,11 +16,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-  <h1>Bad Advice</h1>
+
+<div id="parent">
   <center id="form">
     <form id="question-form">
-      <label for="question-input">Do you need advice on a tough decision? <br> <br> Are you seeking counsel from people
+      <label for="question-input">
+        <h1>Bad Advice</h1> <h2>by SUPERMAX</h2><br> Do you need advice on a tough decision? <br> <br> Are you seeking counsel from people
         who are prone
         to consistently provide unreliable or misguided advice? <br> <br> Our community, inequipped with the skills
         necessary for critical thinking, is here to help! <br> <br>
@@ -30,79 +34,112 @@
     </form>
   </center>
   <div id="response-container"></div>
+</div>
+<body>
   <script>
-const addButton = document.createElement("button");
-addButton.innerHTML = "Add input";
-const form = document.getElementById("question-form");
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const questionInput = document.getElementById("question-input");
-    if (questionInput.value.trim() === "") {
+
+
+    const form = document.getElementById("question-form");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const questionInput = document.getElementById("question-input");
+      if (questionInput.value.trim() === "") {
         // Display an error message or do nothing if the input is empty
         return;
-    }
-    const responseContainer = document.getElementById("response-container");
-    const date = new Date();
-    // Create the question box
-    const questionBox = document.createElement("div");
-    questionBox.innerHTML = `<span style="font-size: 30px;">${questionInput.value
+      }
+      const responseContainer = document.getElementById("response-container");
+      const date = new Date();
+      // Create the question box
+      const questionBox = document.createElement("div");
+      questionBox.innerHTML = `<span style="font-size: 30px;">${questionInput.value
         }</span> <br> <span style="font-size: 10px;">${date.toString()}</span>`;
-    questionBox.style.backgroundColor = "black";
-    questionBox.style.color = "white";
-    questionBox.style.padding = "300px";
-    questionBox.style.width = "150px";
-    questionBox.style.padding = "10px";
-    questionBox.style.fontFamily = "Rubik, sans-serif";
-    questionBox.setAttribute("contenteditable", "false");
-    responseContainer.appendChild(questionBox);
 
-    // Create the div element that the user can type into
-    const userInputDiv = document.createElement("div");
-    userInputDiv.innerHTML = "Enter your response here";
-    userInputDiv.style.backgroundColor = "black";
-    userInputDiv.style.color = "white";
-    userInputDiv.style.padding = "10px";
-    userInputDiv.style.fontFamily = "Rubik, sans-serif";
-    userInputDiv.setAttribute("contenteditable", "true");
+          
+// Choose a color based on the random number
+let num = Math.floor(Math.random() * 10);
+let color;
+if (num === 0) {
+  color = "#03071E";
+} else if (num === 1) {
+  color = "#370617";
+} else if (num === 2) {
+  color = "#6A040F"; 
+} else if (num === 3) {
+  color = "#9D0208"; 
+}else if (num === 4) {
+  color = "#D00000"; 
+}else if (num === 5) {
+  color = "#DC2F02"; 
+}else if (num === 6) {
+  color = "#E85D04"; 
+}else if (num === 7) {
+  color = "#F48C06"; 
+}else if (num === 8) {
+  color = "#FAA307"; 
+}else if (num === 9) {
+  color = "#FFBA08"; 
+}else {
+  color = "#FFBA08"; 
+}
 
-    userInputDiv.addEventListener("focus", () => {
+
+questionBox.style.backgroundColor = color; 
+      questionBox.style.color = "white";
+      questionBox.style.width = "150px";
+      questionBox.style.padding = "10px";
+      questionBox.style.fontFamily = "Rubik, sans-serif";
+      questionBox.setAttribute("contenteditable", "false");
+      const addButton = document.createElement("button");
+    addButton.innerHTML = "Add input";
+      responseContainer.appendChild(questionBox);
+
+      // Create the div element that the user can type into
+      const userInputDiv = document.createElement("div");
+      userInputDiv.innerHTML = "Respond here";
+   
+      userInputDiv.style.color = "white";
+      userInputDiv.style.padding = "10px";
+      userInputDiv.style.fontFamily = "Rubik, sans-serif";
+      userInputDiv.setAttribute("contenteditable", "true");
+
+      userInputDiv.addEventListener("focus", () => {
         const selection = window.getSelection();
         const range = document.createRange();
         range.selectNodeContents(userInputDiv);
         selection.removeAllRanges();
         selection.addRange(range);
-    });
+      });
 
 
 
-    addButton.addEventListener("click", () => {
+      addButton.addEventListener("click", () => {
         const responseDiv = document.createElement("div");
         if (userInputDiv.innerHTML.trim() === "") {
-            // Don't create a new response div if the user's input is empty
-            return;
+          // Don't create a new response div if the user's input is empty
+          return;
         }
-        if (userInputDiv.innerHTML.trim() === "Enter your response here") {
-            // Don't create a new response div if the user's input is empty
-            return;
+        if (userInputDiv.innerHTML.trim() === "Respond here") {
+          // Don't create a new response div if the user's input is empty
+          return;
         }
+        
         responseDiv.setAttribute("contenteditable", "true");
-        responseDiv.innerHTML = "Enter your response here";
-        responseDiv.style.backgroundColor = "black";
+        responseDiv.innerHTML = "Respond here";
         responseDiv.style.color = "white";
         responseDiv.style.padding = "10px";
         responseDiv.style.fontFamily = "Rubik, sans-serif";
         questionBox.appendChild(responseDiv);
+      });
+
+
+      questionBox.appendChild(addButton);
+
+
+      questionBox.appendChild(userInputDiv);
+
+
+
     });
-
-
-    questionBox.appendChild(addButton);
-
-
-    questionBox.appendChild(userInputDiv);
-
-
-
-});
 
   </script>
 
